@@ -18,5 +18,13 @@ print('Theorotical Deriative =', p_der_eval)
 #Numerical calculations using FDM (forward)
 x_0 = 0.0
 h = np.float64(0.25)
+forward_difference = (np.polyval(poly_p, x_0 + h) - np.polyval(poly_p,x_0)) / h
+print('Forward Derivative =', forward_difference)
 
+#Numerical calculations using FDM (backward)
+backward_difference = (np.polyval(poly_p, x_0) - np.polyval(poly_p, x_0 - h)) / h
+print('Backward Derivative =', backward_difference)
 
+#Numerical calculation using FDM (Central difference)
+Central_difference = (np.polyval(poly_p, x_0 + h) - np.polyval(poly_p, x_0 - h)) / (2*h)
+print('Central difference =', Central_difference)
