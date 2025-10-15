@@ -44,21 +44,22 @@ def analyse_derivative(poly_coeffs, x_0, h):
    
    #4.Visualisation
    plot_results(poly_coeffs, p_der_coeffs, x_0, h)
+   
        
    # - -Main Execution - -    
        
- if __name__ == "__main__":
+if __name__ == "__main__":
  
  #actual array of the polynomial is created 
      poly_p = np.array([-4, 7, -3, 9])
  
- x_val = 0.0
- h_val = 0.25
+x_val = 0.0
+h_val = 0.25
  
- analyse_derivative(poly_p, x_val, h_val)
+analyse_derivative(poly_p, x_val, h_val)
  
- analyse_derivative(poly_p, x_val, 0.01)
- print("test")      
+analyse_derivative(poly_p, x_val, 0.01)
+    
     
     
     
