@@ -20,7 +20,7 @@ k = 0.1;
 A = 0.001;
 
 #Iterations
-iterations = 0;
+iterations = 0
 
 # Initialise the temperture field
 T = np.zeros(N)
@@ -31,12 +31,12 @@ T_new = np.zeros(N)
 T_new[N-1] = 1.
 
 #Error related variables
-epsilon = 1.E-08
+epsilon = 1.E-05
 numerical_error = 1
 
 #Checking the error tolerance
 while numerical_error > epsilon:
-    for i in range(0,N-1):
+    for i in range(1,N-1):
         a_E = np.float64(k*A/h)
         a_W = np.float64(k*A/h)
         if i==0:
@@ -45,16 +45,15 @@ while numerical_error > epsilon:
         T_new[i] = (a_E*T[i+1] + a_W*T[i-1]) / a_P
     
     #recalculating the error'
-    numerical_error = 0
-    for i in range(1,N-1):
-        numerical_error = numerical_error + abs(T[i] - T_new[i])
-        
+    numerical_error = np.sum(np.abs(T_new-T))
+            
     #iterations advancement
     iterations = iterations + 1
     T = T_new.copy()
         
            
 #Plotting the results
+plt.figure()
 
 #Defining the position vector from the indices
 x_dom = np.arange(N) * h
