@@ -8,7 +8,7 @@ L = 1.0
 h = np.float64(L/(N-1))
 
 #velocity
-u = np.float64(0.1)
+u = np.float64(50)
 
 #Density
 rho = np.float64(1.0)
@@ -40,8 +40,8 @@ plt.figure(10)
 
 while numerical_error > epsilon:
     for i in range(1,N-1):
-        a_W = (gamma / h) + ((rho*u) / 2)
-        a_E = (gamma / h) - ((rho*u) / 2)
+        a_W = gamma/h + max(rho*u,0)
+        a_E = gamma/h - max(0,-rho*u)
         a_P = a_W + a_E
         T_new[i] = (a_E*T[i+1] + a_W*T[i-1])/ a_P
         
